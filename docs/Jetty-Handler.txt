@@ -1,0 +1,83 @@
+Jetty是一个Web服务器，构建于HTTP协议之上。
+大致上，网络上的HTTP包经由网络模块的解析，再由线程池模块的分配
+然后将抵达Handler：Jetty提供的用于处理业务的回调。
+下面的重点将是介绍Jetty之Handler链表。
+Jetty将Handler组织成链表形式，让人不得不想起设计模式之职责链模式
+
+大军未动，Demo先行
+public class TestMain{
+
+    public class HandlerTest extends HandlerWrapper{
+        protected String path;
+
+        public HandlerTest(String path){
+            this.path = path;
+        }
+		
+        @Override
+        public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+            System.out.println("当前target路径为：" + target);
+            if(path.equalsIgnoreCase(target)){
+                System.out.println("Hello world jetty " + path + "\n");
+
+            }else{
+                System.out.println("传递到链表的下一个handler去处理\n");
+                super.handle(target,baseRequest,request,response);
+            }
+        }
+    }
+
+    public void start(){
+        Server jettyServer = new Server(80);
+        HandlerTest h1 = new HandlerTest("/path1");
+        HandlerTest h2 = new HandlerTest("/path2");
+
+        h2.setHandler(h1);
+        jettyServer.setHandler( h2);
+
+        try {
+            jettyServer.start();
+            jettyServer.join();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args){
+        TestMain testMain = new TestMain();
+        testMain.start();
+    }
+}
+
+通过浏览器分别返回地址
+http://127.0.0.1/path1
+输出：
+	当前target路径为：/path1
+	传递到链表的下一个handler去处理
+
+	当前target路径为：/path1
+	Hello world jetty /path1
+	
+http://127.0.0.1/path2
+输出：
+	当前target路径为：/path2
+	Hello world jetty /path2
+
+	
+实现链表的关键正是HandlerWrapper
+/** A <code>HandlerWrapper</code> acts as a {@link Handler} but delegates the {@link Handler#handle handle} method and
+ * {@link LifeCycle life cycle} events to a delegate. This is primarily used to implement the <i>Decorator</i> pattern.
+ * 
+ */
+HandlerWrapper extends AbstractHandlerContainer
+对Handle的简单封装，可将请求委托给另一个Handler(其成员变量_handler
+	 
+包含成员：
+protected Handler _handler;
+
+方法：
+handle(target,request,response)
+	_handler.handle(target,request,response);
+	将请求转给其成员_handler处理
+	
+所以，HandlerTest是继承自HandlerWrapper，在接收到不是自己能处理的请求时，简单调用父类的handle。

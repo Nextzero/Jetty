@@ -1,0 +1,67 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+
+*
+{
+	color:#666666;
+	fontSize: 14;
+	fontFamily: "微软雅黑";
+	fontWeight: normal;
+}
+
+.myContext
+{
+	color:#666666;
+	fontSize: 14;
+	fontFamily: "微软雅黑";
+	fontWeight: normal;
+}
+
+.titleStyle
+{
+	color:#2D97D5;
+	fontSize: 25;
+	fontFamily: "微软雅黑";
+	fontWeight: bold;
+}
+
+.secondTitleStyle
+{
+	color:#666666;
+	fontSize: 16;
+	fontFamily: "微软雅黑";
+	fontWeight: normal;
+}
+
+.btnSummary
+{
+	Skin:Embed(source="../img/btn_summary_down.png");
+	upSkin:Embed(source="../img/btn_summary_down.png");
+	downSkin:Embed(source="../img/btn_summary_down.png");
+	overSkin:Embed(source="../img/btn_summary_normal.png");
+}
+
+.btnManager
+{
+	Skin:Embed(source="../img/btn_manager_down.png");
+	upSkin:Embed(source="../img/btn_manager_down.png");
+	downSkin:Embed(source="../img/btn_manager_down.png");
+	overSkin:Embed(source="../img/btn_manager_normal.png");
+}
+
+.btnSummarySelectd
+{
+	Skin:Embed(source="../img/btn_summary_normal.png");
+	upSkin:Embed(source="../img/btn_summary_normal.png");
+	downSkin:Embed(source="../img/btn_summary_normal.png");
+	overSkin:Embed(source="../img/btn_summary_normal.png");
+}
+
+.btnManagerSelectd
+{
+	Skin:Embed(source="../img/btn_manager_normal.png");
+	upSkin:Embed(source="../img/btn_manager_normal.png");
+	downSkin:Embed(source="../img/btn_manager_normal.png");
+	overSkin:Embed(source="../img/btn_manager_normal.png");
+}

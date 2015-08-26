@@ -1,0 +1,3 @@
+学习Jetty的相关Demo
+每个demo为独立的POM工程
+所有Demo将依赖lib目录下的jar包，调试时需要手动添加到工程里

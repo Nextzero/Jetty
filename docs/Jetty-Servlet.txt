@@ -1,0 +1,27 @@
+Servlet相关接口
+	Servlet
+	ServletConfig
+	ServletContext
+	ServletRequest
+	ServletResponse	
+	Filter
+
+Jetty Servlet相关接口
+	ServletHolder
+		成员：
+			Servlet _servlet;
+		
+	ServletHandler
+		成员:
+			ServletContext _servletContext;
+			ServletHolder[] _servlets;
+			FilterHolder[] _filters;
+			
+	ServletContextHandler
+		成员:
+			ServletHandler
+			
+	FilterHolder
+		成员：
+			Filter filter;
+			
