@@ -23,7 +23,7 @@ import java.io.IOException;
  * 当前target路径为：/path2
  * Hello world jetty /path2
  */
-public class TestMain{
+public class TestJettyServer {
 
     public class HandlerTest extends HandlerWrapper{
         protected String path;
@@ -63,7 +63,7 @@ public class TestMain{
     }
 
     public static void main(String[] args){
-        TestMain testMain = new TestMain();
-        testMain.start();
+        TestJettyServer testJettyServer = new TestJettyServer();
+        testJettyServer.start();
     }
 }
