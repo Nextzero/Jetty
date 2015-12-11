@@ -1,4 +1,5 @@
 import java.io.IOException;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,5 +21,8 @@ public class GoodbyeServlet extends HttpServlet {
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().println("<h1>" + msg + "</h1>");
         response.getWriter().println("session=" + request.getSession(true).getId());
+
+        ServletContext context = request.getServletContext();
+        System.out.println(context.getAttribute("aaaa"));
     }
 }

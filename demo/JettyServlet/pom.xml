@@ -8,5 +8,21 @@
     <artifactId>JettyServlet</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <org.eclipse.jetty.version>9.1.0.v20131115</org.eclipse.jetty.version>
+    </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>${org.eclipse.jetty.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+            <version>${org.eclipse.jetty.version}</version>
+        </dependency>
+    </dependencies>
 </project>
