@@ -12,17 +12,10 @@ public class GoodbyeServlet extends HttpServlet {
     public GoodbyeServlet() {
     }
 
-    public GoodbyeServlet(String msg) {
-        this.msg = msg;
-    }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().println("<h1>" + msg + "</h1>");
         response.getWriter().println("session=" + request.getSession(true).getId());
-
-        ServletContext context = request.getServletContext();
-        System.out.println(context.getAttribute("aaaa"));
     }
 }

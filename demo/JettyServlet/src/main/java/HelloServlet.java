@@ -12,10 +12,6 @@ public class HelloServlet extends HttpServlet {
     public HelloServlet() {
     }
 
-    public HelloServlet(String msg) {
-        this.msg = msg;
-    }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println(this.getClass().getName() + "- target : " + request.getQueryString());
 
@@ -23,9 +19,6 @@ public class HelloServlet extends HttpServlet {
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().println("<h1>" + msg + "</h1>");
         response.getWriter().println("session=" + request.getSession(true).getId());
-
-        ServletContext context = request.getServletContext();
-        context.setAttribute("aaaa", "bbbb");
     }
 }
 

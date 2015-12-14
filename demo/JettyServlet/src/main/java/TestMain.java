@@ -6,8 +6,7 @@ import org.eclipse.jetty.servlet.ServletHolder;
 
 import java.lang.reflect.Field;
 
-public class ServletContextServer {
-
+public class TestMain {
     /**
      * 检验HandlerWrapper构成的链结构
      * @param head
@@ -60,7 +59,7 @@ public class ServletContextServer {
     public static void main(String[] args) throws Exception {
         Server server = new Server(8080);
 
-        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SECURITY | ServletContextHandler.SESSIONS);
         context.setContextPath("/test");
         server.setHandler(context);
         context.addServlet(new ServletHolder(new HelloServlet()), "/hello"); // http://localhost:8080/test/hello

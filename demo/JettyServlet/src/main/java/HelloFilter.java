@@ -1,9 +1,7 @@
 import javax.servlet.*;
 import java.io.IOException;
 
-/**
- * Created by kinkoo on 2015/12/11.
- */
+
 public class HelloFilter implements Filter {
 
     @Override
