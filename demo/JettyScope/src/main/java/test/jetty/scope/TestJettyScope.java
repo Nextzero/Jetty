@@ -10,13 +10,15 @@ public class TestJettyScope {
         A a = new A();
         B b = new B();
         C c = new C();
+        C1 c1= new C1();
         D d = new D();
 
         c.setHandler(d);
-        b.setHandler(c);
+        c1.setHandler(c);
+        b.setHandler(c1);
         a.setHandler(b);
         jettyServer.setHandler(a);
-
+        //a,b,c1,c,d
         try {
             jettyServer.start();
             jettyServer.join();
